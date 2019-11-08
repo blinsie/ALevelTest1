@@ -11,7 +11,8 @@ public class ChessStep {
 
     public boolean canKnightJumpInOneStep(FieldPoint start, FieldPoint finish) {
 
-        if (start.i < 0 || start.j < 0 || finish.i < 0 || finish.j < 0)
+        if (start.i < 0 || start.j < 0 || finish.i < 0 || finish.j < 0
+                || start.i > 8 || start.j > 8 || finish.i > 8 || finish.j > 8)
             return false;
 
         return ((Math.abs(start.i - finish.i) == 2) && ((Math.abs(start.j - finish.j)) == 1))

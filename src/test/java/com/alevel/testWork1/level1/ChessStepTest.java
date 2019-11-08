@@ -7,13 +7,14 @@ import static org.junit.Assert.*;
 
 public class ChessStepTest {
 
-    int[][] field = new int[8][8];
     ChessStep.FieldPoint start1 = new ChessStep.FieldPoint(4, 2);
     ChessStep.FieldPoint start2 = new ChessStep.FieldPoint(0, 2);
     ChessStep.FieldPoint finish1 = new ChessStep.FieldPoint(3, 4);
     ChessStep.FieldPoint finish2 = new ChessStep.FieldPoint(1, 4);
     ChessStep.FieldPoint zeroPoint = new ChessStep.FieldPoint(0, 0);
     ChessStep.FieldPoint minusPoint = new ChessStep.FieldPoint(-6, 0);
+    ChessStep.FieldPoint abroadPoint = new ChessStep.FieldPoint(10, 0);
+
 
     @Test
     public void canKnightJumpInOneStepTrueTest() {
@@ -28,6 +29,11 @@ public class ChessStepTest {
     @Test
     public void canKnightJumpInOneNegativeStepTest() {
         Assert.assertFalse(new ChessStep().canKnightJumpInOneStep(start1, minusPoint));
+    }
+
+    @Test
+    public void canKnightJumpAbroadStepTest() {
+        Assert.assertFalse(new ChessStep().canKnightJumpInOneStep(start1, abroadPoint));
     }
 
     @Test
