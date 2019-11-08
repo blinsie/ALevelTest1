@@ -1,5 +1,6 @@
 package com.alevel.testWork1.level1;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,14 +12,24 @@ import java.util.Set;
 public class UniqueElements {
 
     public int getUniqueElementsCountInArray(int[] array) {
-        Set<Integer> set = new HashSet<Integer>();
-        int counter = 0;
+        int counter = array.length;
+        int currentNum = 0;
 
-        for (int i = 0; i < array.length; i++) {
-            if(!set.contains(array[i])) {
-                counter++;
-                set.add(array[i]);
+        Arrays.sort(array);
+
+        for (int i = 0; i < array.length; ) {
+            for (int j = i; j < array.length; j++) {
+                if (array[j] == array[i]) {
+                    currentNum++;
+                }
             }
+            if (currentNum > 1) {
+                counter = counter - currentNum + 1;
+                i = i + currentNum;
+            } else {
+                i++;
+            }
+            currentNum = 0;
         }
 
         return counter;
